@@ -2,6 +2,7 @@ package com.fastcampus.projectboard.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -16,4 +17,10 @@ public class ArticleController {
         return "articles/index";
     }
 
+    @GetMapping("/{articleId}")
+    public String article(@PathVariable Long articleId, ModelMap map){
+        map.addAttribute("articles",null);
+        map.addAttribute("articleComments",List.of());
+        return "articles/detail";
+    }
 }
