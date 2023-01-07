@@ -166,3 +166,7 @@ insert into article_comment (article_id, content, created_at, modified_at, creat
                                                                                                                                     (33,  'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.', '2021-03-19 04:18:04', '2021-11-28 06:15:06', 'Elvin', 'Sunny'),
                                                                                                                                     (102, 'Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.', '2021-11-28 18:39:57', '2021-06-24 11:01:37', 'Fax', 'Jayme'),
                                                                                                                                     (28,  'In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.', '2021-08-03 06:01:12', '2021-03-12 08:58:02', 'Eldon', 'Emory');
+
+insert into user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, modified_by) values
+    ('uno', 'asdf1234', 'Uno', 'uno@mail.com', 'I am Uno.', now(), 'uno', now(), 'uno')
+;
