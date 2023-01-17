@@ -25,6 +25,7 @@ public class ArticleService {
     @Transactional(readOnly = true)
     public Page<ArticleDto> searchArticles(SearchType searchType, String searchKeyword, Pageable pageable) {
         if( searchKeyword == null || searchKeyword.isBlank()){
+
             return articleRepository.findAll(pageable).map(ArticleDto::from);
         }
 
@@ -69,4 +70,7 @@ public class ArticleService {
                 .orElseThrow( () -> new EntityNotFoundException("게시글이 없습니다 - articleId: " + articleId));
     }
 
+    public long getArticleCount() {
+        return articleRepository.count();
+    }
 }
