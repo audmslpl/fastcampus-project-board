@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
-
+import java.util.Arrays;
 @Slf4j
 @RequiredArgsConstructor
 @Transactional
@@ -37,7 +37,7 @@ public class ArticleService {
             case CONTENT -> articleRepository.findByContentContaining(searchKeyword,pageable).map(ArticleDto::from);
             case ID -> articleRepository.findByUserAccount_UserIdContaining(searchKeyword,pageable).map(ArticleDto::from);
             case NICKNAME -> articleRepository.findByUserAccount_NicknameContaining(searchKeyword,pageable).map(ArticleDto::from);
-            case HASHTAG -> articleRepository.findByHashtag("#"+searchKeyword,pageable).map(ArticleDto::from);
+            case HASHTAG -> articleRepository.findByHashtagNames( Arrays.stream(searchKeyword.split(" ")).toList(), pageable).map(ArticleDto::from);
         };
     }
 
@@ -59,7 +59,7 @@ public class ArticleService {
             if(article.getUserAccount().equals(userAccount)){
                 if (dto.title() != null) {article.setTitle(dto.title()); }
                 if (dto.content() != null) {article.setContent(dto.content());}
-                article.setHashtag(dto.hashtag());
+
             }
 
         }catch(EntityNotFoundException e){
@@ -90,13 +90,15 @@ public class ArticleService {
         return articleRepository.count();
     }
     @Transactional(readOnly = true)
-    public Page<ArticleDto> searchArticlesViaHashtag(String hashtag, Pageable pageable) {
-        if(hashtag == null || hashtag.isBlank()){
+    public Page<ArticleDto> searchArticlesViaHashtag(String hashtagName, Pageable pageable) {
+        if (hashtagName == null || hashtagName.isBlank()) {
             return Page.empty(pageable);
         }
 
-        return articleRepository.findByHashtag(hashtag,pageable).map(ArticleDto::from);
+        return articleRepository.findByHashtagNames(List.of(hashtagName), pageable)
+                .map(ArticleDto::from);
     }
+
 
     public List<String> getHashtags() {
         return articleRepository.findAllDistinctHashtags();
