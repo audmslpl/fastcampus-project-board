@@ -32,6 +32,7 @@ dependencies {
 	implementation 'org.springframework.data:spring-data-rest-hal-explorer'
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'com.mysql:mysql-connector-j'
+	runtimeOnly 'org.postgresql:postgresql'
 
 	// queryDSL 설정
 	implementation "com.querydsl:querydsl-jpa"
