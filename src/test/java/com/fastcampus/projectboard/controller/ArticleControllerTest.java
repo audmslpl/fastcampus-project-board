@@ -260,7 +260,7 @@ class ArticleControllerTest {
     @WithUserDetails(value ="seol",setupBefore = TestExecutionEvent.TEST_EXECUTION)
     @DisplayName("[view][POST] 게시글 수정 - 정상 호출")
     @Test
-    void givenUpdatedArticleInfo_whenRequesting_thenUpdatesNewArticle() throws Exception {
+    void  givenUpdatedArticleInfo_whenRequesting_thenUpdatesNewArticle() throws Exception {
         // Given
         long articleId = 1L;
         ArticleRequest articleRequest = ArticleRequest.of("new title", "new content");

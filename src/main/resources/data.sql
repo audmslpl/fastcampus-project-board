@@ -1,7 +1,7 @@
 -- 테스트 계정
 -- TODO: 테스트용이지만 비밀번호가 노출된 데이터 세팅. 개선하는 것이 좋을 지 고민해 보자.
 insert into user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, modified_by) values
-    ('seol', '{noop}asdf1234', 'seol', 'seol@mail.com', 'I am Uno.', now(), 'seol', now(), 'seol')
+    ('seol', '{noop}asdf1234', 'Seol', 'seol@mail.com', 'I am Uno.', now(), 'seol', now(), 'seol')
 ;
 insert into user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, modified_by) values
     ('seol2', '{noop}asdf1234', 'Seol2', 'seol2@mail.com', 'I am Uno2.', now(), 'seol2', now(), 'seol2')
